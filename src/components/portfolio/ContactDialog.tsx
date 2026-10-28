@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Github, Mail } from "lucide-react";
 
-export const CONTACT_EMAIL = "ivansantomuze@gmail.com";
+export const CONTACT_EMAIL = "ivan.santo.muzee@gmail.com";
+export const GITHUB_URL = "https://github.com/IvanJSantoMuze766";
+export const AVAILABILITY_COPY = "Available for immediate freelance projects, data automation pipelines, and hybrid contracts.";
 
 export function ContactDialog({ children }: { children: ReactNode }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -23,8 +26,16 @@ export function ContactDialog({ children }: { children: ReactNode }) {
       <DialogContent className="glass border-border sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">Let's build something fast.</DialogTitle>
-          <DialogDescription>Tell me about your project — I reply within 24 hours.</DialogDescription>
+          <DialogDescription>{AVAILABILITY_COPY} I reply within 24 hours.</DialogDescription>
         </DialogHeader>
+        <div className="flex flex-col gap-2 rounded-xl border border-border bg-background/60 p-4 font-mono text-sm">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-primary">
+            <Mail className="h-4 w-4 text-primary" /> {CONTACT_EMAIL}
+          </a>
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-primary">
+            <Github className="h-4 w-4 text-primary" /> github.com/IvanJSantoMuze766
+          </a>
+        </div>
         <form onSubmit={submit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
