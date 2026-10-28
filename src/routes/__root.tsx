@@ -80,12 +80,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Ivan Santo Muze — Full-Stack Developer" },
       { name: "description", content: "Full-Stack Developer & Data Automation Specialist in Tucumán, Argentina." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Ivan Santo Muze" },
       { property: "og:title", content: "Ivan Santo Muze — Full-Stack Developer" },
       { property: "og:description", content: "Full-Stack Developer & Data Automation Specialist in Tucumán, Argentina." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
