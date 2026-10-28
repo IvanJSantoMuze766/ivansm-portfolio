@@ -1,10 +1,10 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Github, Mail, MapPin, Zap, Code2, Rocket, Database, Terminal, ShoppingCart, BarChart3, Briefcase, Users, Gauge } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Mail, MapPin, Zap, Code2, Rocket, Database, Terminal, ShoppingCart, BarChart3, Briefcase, Users, Gauge, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ContactDialog, CONTACT_EMAIL } from "./ContactDialog";
+import { ContactDialog, CONTACT_EMAIL, GITHUB_URL, AVAILABILITY_COPY } from "./ContactDialog";
 import { useReveal } from "@/hooks/use-reveal";
 
-const GITHUB = "https://github.com/ivansantomuze";
+const GITHUB = GITHUB_URL;
 
 function SectionHead({ tag, title }: { tag: string; title: string }) {
   return (
