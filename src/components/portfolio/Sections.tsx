@@ -1,10 +1,10 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Github, Mail, MapPin, Zap, Code2, Rocket, Database, Terminal, ShoppingCart, BarChart3, Briefcase, Users, Gauge } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Mail, MapPin, Zap, Code2, Rocket, Database, Terminal, ShoppingCart, BarChart3, Briefcase, Users, Gauge, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ContactDialog, CONTACT_EMAIL } from "./ContactDialog";
+import { ContactDialog, CONTACT_EMAIL, GITHUB_URL, AVAILABILITY_COPY } from "./ContactDialog";
 import { useReveal } from "@/hooks/use-reveal";
 
-const GITHUB = "https://github.com/ivansantomuze";
+const GITHUB = GITHUB_URL;
 
 function SectionHead({ tag, title }: { tag: string; title: string }) {
   return (
@@ -295,9 +295,70 @@ export function Process() {
           <div className="pointer-events-none absolute inset-0 bg-brand opacity-10" />
           <h3 className="relative text-3xl font-bold md:text-5xl">Got messy data or a slow app?</h3>
           <p className="relative mt-3 text-muted-foreground">Let's turn it into your competitive edge.</p>
+          <p className="relative mx-auto mt-4 max-w-xl font-mono text-sm text-primary">{AVAILABILITY_COPY}</p>
           <ContactDialog><Button variant="hero" size="lg" className="pulse-cta relative mt-8 h-12 px-8">Start a project <ArrowRight /></Button></ContactDialog>
         </div>
       </Reveal>
+    </section>
+  );
+}
+
+function CopyButton({ value }: { value: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={`Copy ${value}`}
+      className="rounded-lg border border-border p-2 text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+    >
+      {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
+    </button>
+  );
+}
+
+export function Contact() {
+  return (
+    <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24">
+      <Reveal><SectionHead tag="direct contact" title="Skip the middleman." /></Reveal>
+      <Reveal delay={120}>
+        <p className="max-w-2xl text-lg text-muted-foreground">{AVAILABILITY_COPY}</p>
+      </Reveal>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <Reveal delay={200} className="h-full">
+          <div className="glass glow-card flex h-full items-center justify-between gap-4 rounded-2xl p-6">
+            <div className="flex min-w-0 items-center gap-4">
+              <div className="rounded-xl bg-brand p-3 text-primary-foreground"><Mail className="h-5 w-5" /></div>
+              <div className="min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Email</p>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="block truncate font-mono text-sm hover:text-primary md:text-base">{CONTACT_EMAIL}</a>
+              </div>
+            </div>
+            <CopyButton value={CONTACT_EMAIL} />
+          </div>
+        </Reveal>
+        <Reveal delay={300} className="h-full">
+          <div className="glass glow-card flex h-full items-center justify-between gap-4 rounded-2xl p-6">
+            <div className="flex min-w-0 items-center gap-4">
+              <div className="rounded-xl bg-brand p-3 text-primary-foreground"><Github className="h-5 w-5" /></div>
+              <div className="min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">GitHub</p>
+                <a href={GITHUB} target="_blank" rel="noreferrer" className="block truncate font-mono text-sm hover:text-primary md:text-base">github.com/IvanJSantoMuze766</a>
+              </div>
+            </div>
+            <CopyButton value={GITHUB} />
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }
@@ -308,8 +369,8 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
         <p>© {new Date().getFullYear()} Ivan J. Santo Muze · Tucumán, Argentina</p>
         <div className="flex gap-5">
-          <a href={GITHUB} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary"><Github className="h-4 w-4" /> github.com/ivansantomuze</a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-1.5 hover:text-primary"><Mail className="h-4 w-4" /> Email</a>
+          <a href={GITHUB} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary"><Github className="h-4 w-4" /> github.com/IvanJSantoMuze766</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-1.5 hover:text-primary"><Mail className="h-4 w-4" /> {CONTACT_EMAIL}</a>
         </div>
       </div>
     </footer>
