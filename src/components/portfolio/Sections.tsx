@@ -43,7 +43,7 @@ export function Nav() {
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden px-4 pb-24 pt-40 md:pt-48">
+    <section id="top" className="relative overflow-hidden mx-auto max-w-6xl px-4 pb-24 pt-40 md:pt-48">
       <div className="bg-grid pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-brand opacity-20 blur-[120px]" />
       <div className="relative mx-auto max-w-5xl text-center">
