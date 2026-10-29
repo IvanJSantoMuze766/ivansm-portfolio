@@ -23,7 +23,7 @@ export function ContactDialog({ children }: { children: ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="glass border-border sm:max-w-lg">
+      <DialogContent className="glass border-border text-white sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">Let's build something fast.</DialogTitle>
           <DialogDescription>{AVAILABILITY_COPY} I reply within 24 hours.</DialogDescription>
