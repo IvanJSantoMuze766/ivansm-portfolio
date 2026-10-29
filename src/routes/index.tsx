@@ -30,6 +30,3 @@ function Index() {
     </main>
   );
 }
-    </main>
-  );
-}
